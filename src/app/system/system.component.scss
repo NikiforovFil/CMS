@@ -1,0 +1,16 @@
+.container-fluid  {
+    margin: 0;
+    padding: 0;
+}
+.sidebar{
+    background: #EFEFEF;
+    min-height: 92vh;
+}
+.rowContent{
+    margin-top: 69px;
+}
+@media (max-width: 1199px) {
+    .sidebar {
+        display: none;
+    }
+}

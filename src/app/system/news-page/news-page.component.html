@@ -1,0 +1,126 @@
+<!-- анимация загрузки -->
+<div *ngIf="!isLoaded" class="loader">
+  <yh-loader></yh-loader>
+</div>
+
+<div *ngIf="isLoaded">
+  <!-- модальное окно редактирования новости -->
+  <ng-template #editNews>
+    <form [formGroup]='formEdit' (ngSubmit)="onEditNews()">
+      <div class="modal-header">
+        <h2 class="modal-title pull-left">Редактирование новости: "{{newsItem.title}}"</h2>
+        <!-- <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="md-form">
+            <!-- <i class="fa fa-pencil prefix"></i> -->
+            <label>Заголовок новости</label>
+            <input mdbInput mdbValidate type="text" [value]="newsItem.title" class="form-control" formControlName="title">
+            <mdb-error *ngIf="formEdit.get('title').invalid && formEdit.get('title').touched">
+              Заголовок новости не может быть пустым</mdb-error>
+          </div>
+
+          <div class="md-form">
+            <label>Описание новости</label>
+            <textarea mdbInput mdbValidate type="text" [value]="newsItem.description" class="md-textarea form-control"
+              formControlName="description"></textarea>
+            <mdb-error *ngIf="formEdit.get('description').invalid && formEdit.get('description').touched">
+              Описание новости не может быть пустым</mdb-error>
+          </div>
+
+          <div class="md-form">
+            <label>Ссылка на изображение</label>
+            <textarea mdbInput type="text" [value]="newsItem.img" class="md-textarea form-control" formControlName="img"></textarea>
+          </div>
+
+          <div class="d-flex justify-content-around">
+            <button mdbBtn color="success" type="submit" (click)="modalRef.hide()" class="modalbtn">Сохранить</button>
+            <button mdbBtn color="danger" type="reset" (click)="modalRef.hide()" class="modalbtn">Отменить</button>
+            <button mdbBtn color="warning" type="reset" (click)="onDeleteNews()" (click)="modalRef.hide()" class="modalbtn">Удалить</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </ng-template>
+
+
+  <!-- модальное окно добавления новости -->
+  <ng-template #addNews>
+    <form [formGroup]='formAdd' (ngSubmit)="onAddNews()">
+      <div class="modal-header">
+        <h2 class="modal-title">Добавить новость</h2>
+        <!-- <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="md-form">
+            <!-- <i class="fa fa-pencil prefix"></i> -->
+            <label>Заголовок новости</label>
+            <input mdbInput mdbValidate type="text" class="form-control" formControlName="title">
+            <mdb-error *ngIf="formAdd.get('title').invalid && formAdd.get('title').touched">
+              Заголовок новости не может быть пустым</mdb-error>
+          </div>
+
+          <div class="md-form">
+            <label>Описание новости</label>
+            <textarea mdbInput mdbValidate type="text" class="md-textarea form-control" formControlName="description"></textarea>
+            <mdb-error *ngIf="formAdd.get('description').invalid && formAdd.get('description').touched">
+              Описание новости не может быть пустым</mdb-error>
+          </div>
+
+          <div class="md-form">
+            <label>Ссылка на изображение</label>
+            <textarea mdbInput type="text" rows="1" class="md-textarea form-control" formControlName="img"></textarea>
+          </div>
+
+          <div class="d-flex justify-content-around">
+            <button mdbBtn color="success" type="submit" (click)="modalRef.hide()" [disabled]="formAdd.invalid" class="modalbtn">Сохранить</button>
+            <button mdbBtn color="danger" type="reset" (click)="modalRef.hide()" class="modalbtn">Отменить</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </ng-template>
+
+  <!-- контент -->
+  <div class="container-fluid">
+    <div class="row ">
+      <div class="col">
+        <h2 class="text-center">Новости {{ccUser.name}}</h2>
+
+        <div *ngFor="let n of ccNewsList" class="wrapper">
+          <hr>
+
+          <section class="magazine-section" (click)="openModal(editNews, n)">
+
+            <div class="container-fluid py-2">
+              <div class="row">
+                <div class="col-sm-3 col-lg-3 col-xl-2 view overlay">
+                  <img class="img-fluid rounded" src={{n.img}} alt="Sample image">
+                  <!-- <a>
+                    <div class="mask waves-effect rgba-white-slight"></div>
+                  </a> -->
+                </div>
+
+                <div class="col-sm-9 text">
+                  <p class="font-weight-bold dark-grey-text">{{n.title}}</p>
+                  <p class="dark-grey-text">{{n.date}}</p>
+                  <p class="dark-grey-text description">{{n.description}}</p>
+                </div>
+
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <button type="button" mdbBtn color="success" mdbWavesEffect class="addbtn" (click)="openModal(addNews)">+</button>
+
+    </div>
+  </div>
+</div>

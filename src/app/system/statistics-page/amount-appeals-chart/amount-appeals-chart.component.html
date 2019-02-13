@@ -1,0 +1,13 @@
+<h5 class="text-center">Количество поданных обращений</h5>
+<div style="display: block">
+    <canvas mdbChart
+        [chartType]="chartType"
+        [datasets]="chartDatasets"
+        [labels]="chartLabels"
+        [colors]="chartColors"
+        [options]="chartOptions"
+        [legend]="false"
+        (chartHover)="chartHovered($event)"
+        (chartClick)="chartClicked($event)">
+    </canvas>
+  </div>

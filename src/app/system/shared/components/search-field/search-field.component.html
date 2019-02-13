@@ -1,0 +1,5 @@
+<div class="md-form d-flex align-items-end search">
+  <label for="search">
+    <i class="fa fa-search" aria-hidden="true"></i> Поиск (№ лицевого счета, адрес, дата и т.д.)</label>
+  <input mdbInput id="search" type="text" class="form-control" [(ngModel)]="searchValue" (ngModelChange)="searchValueChange($event)">
+</div>

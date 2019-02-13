@@ -1,0 +1,67 @@
+<!-- анимация загрузки -->
+<div *ngIf="!isLoaded" class="loader">
+  <yh-loader></yh-loader>
+</div>
+
+<div *ngIf="isLoaded" class="content">
+  <i class="fa fa-gear gear ml-1" aria-hidden="true" (click)="openModal(editArea)"> Настроить список счетчиков дома</i>
+  <br>
+
+  <table mdbTable small="true"  class="table-responsive">
+    <thead>
+      <tr>
+        <th scope="col" class="th-sm">Имя пользователя</th>
+        <th class="th-sm">Номер квартиры</th>
+        <th class="th-sm">Дата подключения</th>
+      </tr>
+    </thead>
+
+    <tbody *ngFor="let n of usersList">
+      <tr mdbTableCol>
+        <th scope="row">{{n.name}} {{n.lastname}}</th>
+        <td>{{n.apart}}</td>
+        <td>{{n.regDate | date: "dd.MM.yyyy HH:mm:ss"}}</td>
+      </tr>
+  </table>
+
+  <!-- модальное окно изменения счетчиков -->
+  <ng-template #editArea>
+    <form [formGroup]='formEdit' (ngSubmit)="onEditCounter()">
+      <div class="modal-header">
+        <h4 class="modal-title pull-left">Добавить счетчик</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+
+          <span >
+            <mdb-checkbox [default]="true" formControlName="gas">Газ</mdb-checkbox>
+          </span>
+
+          <span >
+            <mdb-checkbox [default]="true" checked formControlName="hot_water">Горячая вода</mdb-checkbox>
+          </span>
+
+          <span >
+            <mdb-checkbox [default]="true" formControlName="cold_water">Холодная вода</mdb-checkbox>
+          </span>
+
+          <span >
+            <mdb-checkbox [default]="true" formControlName="electricity">Электричество</mdb-checkbox>
+          </span>
+
+          <span >
+            <mdb-checkbox [default]="true" formControlName="heating">Отопление</mdb-checkbox>
+          </span>
+          <hr>
+          <div class="d-flex justify-content-around">
+            <button mdbBtn color="success" type="submit" (click)="modalRef.hide()">Сохранить</button>
+            <button mdbBtn color="danger" type="reset" (click)="modalRef.hide()">Отменить</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </ng-template>
+</div>

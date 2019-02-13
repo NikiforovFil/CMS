@@ -1,0 +1,45 @@
+tbody>tr {
+    cursor: pointer;
+}
+h2{
+    margin-top: 10px;
+}
+.detail{
+    background: #ECECEC;
+}
+//начало уменьшения текста
+@media (max-width: 1199px) {
+    * {
+        font-size: 1.3vw;
+    }
+    h2 {
+        font-size: 2.9vw;
+    }
+}
+//конец уменьшения текста 
+@media (max-width: 860px) {
+    * {
+        font-size: 12px;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    th, td{
+        padding-left: 1px !important;
+        padding-right: 5px !important;
+    }
+    .container-fluid{
+        padding-left: 7px;
+        padding-right: 10px;
+    }
+    .center{
+        text-align: center;
+    }
+}
+
+//настройки таблицы
+@media (max-width: 490px) {
+    .address{
+        display: none;
+    } 
+}

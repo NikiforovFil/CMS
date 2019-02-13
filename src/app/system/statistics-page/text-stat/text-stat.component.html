@@ -1,0 +1,17 @@
+<h5 class="text-center mt-2">Самые популярные услуги</h5>
+<table mdbTable striped="true" small="true" class="table-responsive text-center">
+  <thead>
+    <tr>
+      <th scope="col" class="th-sm first">№</th>
+      <th class="th-sm second">Название</th>
+      <th class="th-sm third">Кол-во заказов</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr mdbTableCol *ngFor="let el of topServices; let idx = index">
+      <th scope="row" class="th-sm first">{{idx+1}}</th>
+      <td class="th-sm second">{{el.name}}</td>
+      <td class="th-sm third">{{el.value}}</td>
+    </tr>
+  </tbody>
+</table>

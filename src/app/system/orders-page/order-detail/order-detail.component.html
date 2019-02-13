@@ -1,0 +1,28 @@
+<!-- анимация загрузки -->
+<div *ngIf="!isLoaded" class="loader">
+  <yh-loader></yh-loader>
+</div>
+
+<div *ngIf="isLoaded" class="content">
+  <h5 class="text-center">Подробная информация</h5>
+  <div>
+    <span>Лицевой счет: {{getAcc(orderItem)}}</span>
+    <br>
+    <span>Дата получения: {{orderItem.date | date: "dd.MM.yyyy hh:mm:ss"}}</span>
+    <br>
+    <span>Имя: {{orderItem.name}}</span>
+    <br>
+    <span>Телефон: {{orderItem.phone}}</span>
+    <br>
+    <span>Текст обращения: </span>
+    <span>{{orderItem.msg}}</span>
+    <br>
+    <span *ngIf="orderItem.status == 'working' || orderItem.status == 'done'">Дата начала выполнения: {{orderItem.dateWorking}}</span>
+    <br>
+    <span *ngIf="orderItem.status == 'done'">Дата выполнения: {{orderItem.dateDone}}</span>
+    <hr>
+  </div>
+
+  <button type="button" class="btn btn-warning btn-sm" size="sm" (click)="applyDetail('working')">"В работе"</button>
+  <button type="button" class="btn btn-success btn-sm" size="sm" (click)="applyDetail('done')">"Выполнено"</button>
+</div>

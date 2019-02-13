@@ -1,0 +1,40 @@
+.border{
+    background:#EFEFEF;
+    color: black;
+    min-width: 440px !important;
+}
+.link{
+  color: blue !important;
+  text-decoration: underline !important;
+  font-size: 14px !important;
+}
+.stay {
+  font-size: 14px !important;
+}
+//начало уменьшения текста
+@media (max-width: 1199px) {
+  * {
+      font-size: 15px !important;
+  }
+  h2 {
+      font-size: 30px !important;
+  }
+}
+//конец уменьшения текста 
+@media (max-width: 860px) {
+  * {
+      font-size: 13px !important;
+  }
+  h2 {
+      font-size: 25px !important;
+  }
+}
+
+@media (max-width: 460px) {
+    .border {
+      min-width: 100px !important;
+    }
+    .link{
+      margin-top: 5px !important;
+    }
+}

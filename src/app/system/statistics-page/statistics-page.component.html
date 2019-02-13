@@ -1,0 +1,45 @@
+<!-- анимация загрузки -->
+<div *ngIf="!isLoaded" class="loader">
+    <yh-loader></yh-loader>
+</div>
+
+<div *ngIf="isLoaded">
+    <div class="container-fluid mt-1">
+        <div class="row">
+            <div class="col-md-5">
+                <!-- общая сумма платежей -->
+                <yh-total-value-payments [chartLabels]="labels" [chartDatasets]="dataValuePayments"></yh-total-value-payments>
+            </div>
+
+            <div class="col-md-4">
+                <!-- общий процент пользователей -->
+                <yh-total-users-chart [chartDatasets]="dataPersentsUsers"></yh-total-users-chart>
+            </div>
+
+            <div class="col-md-3">
+                <!-- текстовая статистика -->
+                <yh-text-stat [topServices]="dataTopServices"></yh-text-stat>
+                <yh-amount-appeals [amountAppeals]="dataAmountAppeals"></yh-amount-appeals>
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- количество пользователей -->
+            <div class="col-lg-4 col-md-6">
+                <yh-amount-users-graph [chartLabels]="labels" [chartDatasets]="dataAmountUsers"></yh-amount-users-graph>
+            </div>
+            <!-- количество поданных платежей -->
+            <div class="col-lg-4 col-md-6">
+                <yh-amount-payments-chart [chartLabels]="labels" [chartDatasets]="dataAmountPayments"></yh-amount-payments-chart>
+            </div>
+            <!-- количество заказанных услуг -->
+            <div class="col-lg-4 col-md-6">
+                <yh-amount-orders-chart [chartLabels]="labels" [chartDatasets]="dataAmountOrders"></yh-amount-orders-chart>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- <div class="col-lg-4 col-md-6">
+        <yh-amount-counters-chart></yh-amount-counters-chart>
+</div> -->

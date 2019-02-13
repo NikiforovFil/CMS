@@ -1,0 +1,27 @@
+<!-- вариант с датапиркером -->
+<!-- <yh-first-date (sendFirstDate)="onFirstDateChanged($event)"></yh-first-date>
+        <i class="fa fa-minus"></i>
+        <yh-second-date (sendSecondDate)="onSecondDateChanged($event)"></yh-second-date> -->
+
+<!-- <form>
+  <div class="form-row">
+    <div class="col-6">
+      <div class="md-form mt-0">
+        <span>Начало периода</span>
+        <input type="date" class="form-control" id="firstDate">
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="md-form mt-0">
+        <span>Конец периода</span>
+        <input type="date" class="form-control" id="second-date">
+      </div>
+    </div>
+  </div>
+</form> -->
+
+<div class="form-group">
+  <input type="text" placeholder="Укажите период" class="form-control pos" bsDaterangepicker placement="left" 
+  (bsValueChange)="onValueChange($event)">
+</div>

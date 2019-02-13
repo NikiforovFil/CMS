@@ -1,0 +1,21 @@
+<h5 class="text-center mt-2">Количество обращений</h5>
+<table mdbTable striped="true" small="true" class="table-responsive">
+  <thead>
+    <tr>
+    </tr>
+  </thead>
+  <tbody>
+    <tr mdbTableCol>
+      <td>Подано</td>
+      <td>{{sum()}}</td>
+    </tr>
+    <tr mdbTableCol>
+      <td>В работе</td>
+      <td>{{getWorking()}}</td>
+    </tr>
+    <tr mdbTableCol>
+      <td>Выполено</td>
+      <td>{{getDone()}}</td>
+    </tr>
+  </tbody>
+</table>

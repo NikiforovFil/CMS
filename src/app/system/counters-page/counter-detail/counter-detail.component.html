@@ -1,0 +1,14 @@
+<!-- анимация загрузки -->
+<div *ngIf="!isLoaded" class="loader">
+  <yh-loader></yh-loader>
+</div>
+
+<div *ngIf="isLoaded" class="content">
+  <h5 class="text-center">Подробная информация</h5>
+  <span>Имя пользователя: {{user.name + ' ' + user.lastname}}</span>
+  <br>
+  <span *ngIf="user.liter">Адрес пользователя: Город {{user.city + ', ул.  ' + user.street + ', лит. ' + user.liter + ', д. ' + user.home + ', кв.  ' + user.apart}}</span>
+  <span *ngIf="!user.liter">Адрес пользователя: Город {{user.city + ', ул.  ' + user.street + ', д. ' + user.home + ', кв.  ' + user.apart}}</span>
+  <br>
+  <span>Телефон пользователя: {{user.phone}} </span>
+</div>

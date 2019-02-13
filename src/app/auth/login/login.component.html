@@ -1,0 +1,54 @@
+<!-- анимация загрузки -->
+<div *ngIf="!isLoaded">
+    <yh-loader></yh-loader>
+</div>
+
+<form [formGroup]="form" (ngSubmit)="onSubmit()" class="text-center border border-light p-5" *ngIf="isLoaded">
+    <h2 class="mb-4">Войдите для работы</h2>
+
+    <div class="alert alert-{{message.type}}" *ngIf="message.text && !form.get.invalid">
+        {{message.text}}
+    </div>
+
+    <div class="md-form" [ngClass]="{'has-error':form.get('email').invalid && form.get('email').touched}">
+        <label for="email"><i class="fa fa-envelope fa-lg" aria-hidden="true"></i>
+            Введите Email</label>
+        <input mdbInput mdbValidate type="email" class="form-control" id="email" formControlName="email">
+        <span class="form-help-text" *ngIf="form.get('email').invalid && form.get('email').touched">
+            <mdb-error *ngIf="form.get('email')['errors']['required']">Email не может быть пустым</mdb-error>
+            <mdb-error *ngIf="form.get('email')['errors']['email']">Введите корректный email</mdb-error>
+        </span>
+    </div>
+
+    <div class="md-form" [ngClass]="{'has-error':form.get('password').invalid && form.get('password').touched}">
+        <label for="password"><i class="fa fa-key fa-lg" aria-hidden="true"></i>
+            Введите пароль</label>
+        <input mdbInput mdbValidate type="password" class="form-control mb-4" id="password" formControlName="password">
+        <span class="form-help-text" *ngIf="form.get('password').invalid && form.get('password').touched">
+            <mdb-error *ngIf="form.get('password')['errors']['required']">Пароль не может быть пустым</mdb-error>
+            <mdb-error *ngIf="form.get('password')['errors']['minlength']">
+                Пароль должен быть больше
+                {{form.get('password')['errors']['minlength']['requiredLength']}} символов.
+                Сейчас введено символов:
+                {{form.get('password')['errors']['minlength']['actualLength']}}.
+            </mdb-error>
+        </span>
+    </div>
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12 col-sm-6">
+                <mdb-checkbox [default]="true" class="stay" formControlName="stayInSystem">Оставаться в системе?</mdb-checkbox>
+            </div>
+            <div class="col-12 col-sm-6">
+                <a class="link" mdbPopover="Позвоните нам по телефону 8-999-123-12-12 и мы с радостью поможем вам!" placement="bottom"
+                    mdbPopoverHeader="Забыли пароль?">
+                    Забыли пароль?
+                </a>
+            </div>
+        </div>
+    </div>
+    <button mdbBtn color="info" block="true" type="submit" class="my-4" [disabled]="form.invalid">
+        Войти
+    </button>
+</form>

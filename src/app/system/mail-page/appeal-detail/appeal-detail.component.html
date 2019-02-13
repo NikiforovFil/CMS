@@ -1,0 +1,26 @@
+<!-- анимация загрузки -->
+<div *ngIf="!isLoaded" class="loader">
+  <yh-loader></yh-loader>
+</div>
+
+<div *ngIf="isLoaded" class="content">
+  <h5 class="text-center">Подробная информация</h5>
+  <div>
+    <span>Лицевой счет: {{acc}}</span>
+    <br>
+    <span>Дата: {{appealItem.date | date: "dd.MM.yyyy hh:mm:ss"}}</span>
+    <br>
+    <span>Телефон абонента: {{appealItem.phone}}</span>
+    <br>
+    <span>Текст обращения: </span>
+    <span>{{appealItem.msg}}</span>
+    <br>
+    <span *ngIf="appealItem.status == 'working' || appealItem.status == 'done'">Дата начала выполнения: {{appealItem.dateWorking}}</span>
+    <br>
+    <span *ngIf="appealItem.status == 'done'">Дата выполнения: {{appealItem.dateDone}}</span>
+    <hr>
+  </div>
+
+  <button type="button" class="btn btn-warning btn-sm" size="sm" (click)="applyDetail('working')">"В работе"</button>
+  <button type="button" class="btn btn-success btn-sm" size="sm" (click)="applyDetail('done')">"Выполнено"</button>
+</div>

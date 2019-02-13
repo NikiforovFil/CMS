@@ -1,0 +1,96 @@
+//настройки кнопки добавления
+.addbtn{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 50%;
+    opacity: 0.8;
+    transition: 0.5s;
+    padding: 15px 22px;
+    z-index: 5;
+}
+.addbtn:hover {
+    opacity: 1;
+    transform: scale(1.2);
+    transition: 0.5s;
+}
+img {
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    float: left;
+}
+h2{
+    margin-top: 10px;
+}
+hr{
+    padding: 0;
+    margin: 0;
+}
+section {
+    margin-left: 20px;
+    padding-top: 0;
+}
+.wrapper:hover {
+    cursor: pointer;
+    background: #ECECEC;
+}
+.wrapper{
+    padding: 0;
+    margin: 0;
+}
+.description {
+    text-align: justify;
+    text-indent: 20px;
+}
+.modalbtn{
+    width: 145px;
+}
+//начало уменьшения текста
+@media (max-width: 1199px) {
+    * {
+        font-size: 1.3vw;
+    }
+    h2 {
+        font-size: 2.9vw;
+    }
+    .modalbtn{
+        font-size: 10px;
+    }
+}
+//конец уменьшения текста 
+@media (max-width: 860px) {
+    * {
+        font-size: 12px !important;
+    }
+    h2 {
+        font-size: 20px;
+    }
+    img {
+
+        width: 120px;
+        height: 100px;
+    }
+    .modalbtn{
+        font-size: 10px;
+        padding: 5px;
+    }
+}
+
+@media (max-width: 575px) {
+    img {
+        width: 120px;
+        height: 100px;
+        margin-left: auto ;
+        margin-right: auto ;
+        float: none;
+    }
+    .text{
+        margin-top: 5px;
+        text-align: center;
+    }
+    .text p{
+        margin: 0;
+    }
+}
+

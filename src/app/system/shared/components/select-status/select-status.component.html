@@ -1,0 +1,5 @@
+<div class="md-form pad">
+    <ng-multiselect-dropdown class="pos" [placeholder]="'Выберите тип сообщения'" [data]="dropdownList" [(ngModel)]="selectedItems"
+        [settings]="dropdownSettings" (ngModelChange)="selectedItemsChange($event)">
+    </ng-multiselect-dropdown>
+</div>

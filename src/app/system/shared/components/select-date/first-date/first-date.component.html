@@ -1,0 +1,16 @@
+  <div class="dualBtn">
+    <button type="button" class="selectType btn btn-outline-dark btn-sm" data-toggle="button" aria-pressed="false"
+      autocomplete="off" ngx-mydatepicker name="mydate" [(ngModel)]="model" [options]="myOptions" #dp="ngx-mydatepicker"
+      (dateChanged)="onFirstDateChanged($event)" (click)="dp.toggleCalendar()">
+      <span *ngIf="!isDateFirst">
+        <i class="fa fa-calendar"></i> выберите дату
+      </span>
+      <span *ngIf="isDateFirst">
+        <i class="fa fa-calendar"></i> {{firstDate | date: 'dd/MM/yyyy'}}
+      </span>
+    </button>
+
+    <button type="button" class="closeBtn btn btn-outline-dark btn-sm" (click)="dp.clearDate()" (click)="unsetFirst()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>

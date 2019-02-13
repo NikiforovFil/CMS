@@ -1,0 +1,63 @@
+<!-- анимация загрузки -->
+<div *ngIf="!isLoaded" class="loader">
+  <yh-loader></yh-loader>
+</div>
+
+<div *ngIf="isLoaded" class="container-fluid">
+  <div class="text-center">
+    <h2>Показания счетчиков</h2>
+  </div>
+
+  <div class="container-fluid">
+    <div class="row justify-content-between">
+      <!-- строка поиска -->
+      <div class="col-xl-6 col-md-4 col-sm-12 my-auto ">
+        <yh-search-field (sendSearchValue)="searchValueChange($event)"></yh-search-field>
+      </div>
+      <!-- выбор типов счетчиков -->
+      <div class="col-xl-3 col-md-4 col-sm-6 my-auto ">
+        <yh-select-type (sendSelectedItems)="selectedTypeChange($event)"></yh-select-type>
+      </div>
+      <!-- выбор даты -->
+      <div class="col-xl-3 col-md-4 col-sm-6 my-auto ">
+        <yh-select-date (sendFirstDate)="selectedFirstDate($event)" (sendSecondDate)="selectedSecondDate($event)"></yh-select-date>
+      </div>
+    </div>
+
+    <div class="row" >
+      <div class="col">
+        <table mdbTable hover="true" class="table-responsive">
+          <thead>
+            <tr class="center">
+              <th scope="col">Лиц. счет</th>
+              <th class="address">Адрес</th>
+              <th>Дата</th>
+              <th >Тип счетчика</th>
+              <th>Показания</th>
+            </tr>
+          </thead>
+
+          <tbody *ngFor="let n of countersData  | yhFilter:searchValue:selectedItems:firstDate:secondDate">
+            <tr mdbTableCol (click)="openDetail(n)" class="center">
+              <th scope="row">{{getAcc(n)}}</th>
+              <th class="address">{{getAddress(n)}}</th>
+              <td>{{n.date | date: "dd.MM.yyyy HH:mm:ss"}}</td>
+              <td>{{getName(n.type)}}</td>
+              <td>{{n.value}}</td>
+            </tr>
+
+            <!-- окно подробной информации slideInDown  -->
+            <tr *ngIf="isDetailVisible && (counter === n)">
+              <td colspan="6" class="detail">
+                <yh-counter-detail [counter]="counter"></yh-counter-detail>
+              </td>
+            </tr>
+          </tbody>
+
+          <!-- <span *ngIf="countersData | yhFilter:searchValue:selectedItems:firstDate:secondDate">Ничего не найдено</span> -->
+
+        </table>
+      </div>
+    </div> 
+  </div>
+</div>

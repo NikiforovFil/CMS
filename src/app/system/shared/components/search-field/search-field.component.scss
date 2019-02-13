@@ -1,0 +1,25 @@
+.search{
+    font-size: 0.9rem;
+}
+label {
+    font-size: 0.9rem;
+    word-wrap: normal;
+}
+
+
+@media (max-width: 1199px) {
+    .search{
+        font-size: 1.3vw;
+    }
+    label {
+        font-size: 1.3vw !important;
+    } 
+}
+@media (max-width: 860px) {
+    .search{
+        font-size: 13px !important;
+    }
+    label {
+        font-size: 12px !important;
+    } 
+}

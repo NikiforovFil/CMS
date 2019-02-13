@@ -1,0 +1,38 @@
+.bckgr {
+    background-color: #EFEFEF;
+     /* The image used */
+    background-image: url("http://www.tvoydom24.com/api/background-login.jpg");
+    /* Full height */
+    min-height: 100vh;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+.logo {
+  width: 100px;
+}
+.window {
+  height: 75vh;
+}
+
+//конец уменьшения текста 
+@media (max-width: 860px) {
+  h1 {
+      font-size: 40px !important;
+  }
+  .logo {
+    width: 90px !important;
+  }
+}
+
+//настройки таблицы
+@media (max-width: 490px) {
+  h1 {
+    font-size: 30px !important;
+}
+  .logo {
+    width: 80px !important;
+  }
+}

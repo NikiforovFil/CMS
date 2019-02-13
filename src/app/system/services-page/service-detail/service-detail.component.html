@@ -1,0 +1,24 @@
+<div class="content">
+  <div *ngIf="!isEdit">
+    <div>
+      <h5 class="text-center">Подробная информация</h5>
+      <span>Название услуги: {{serviceItem.name}}</span>
+      <br>
+      <span>Описание услуги: {{serviceItem.description}}</span>
+      <br>
+      <span>Категория услуги: {{serviceItem.category}}</span>
+      <br>
+      <span>Email: {{serviceItem.email}}</span>
+      <br>
+      <span>Ссылка на картинку: {{serviceItem.img }}</span>
+      <br>
+      <button type="button" class="btn btn-warning btn-sm" (click)="onChange()">Редактировать</button>
+    </div>
+  </div>
+
+  <div *ngIf="isEdit">
+    <yh-service-detail-edit [serviceItem]="serviceItem" (onChangeApply)="onChangeApply()" (onChangeCancel)="onChangeCancel()"
+      (onDelete)="onDelete()">
+    </yh-service-detail-edit>
+  </div>
+</div>

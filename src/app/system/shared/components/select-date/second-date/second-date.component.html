@@ -1,0 +1,21 @@
+  <div class="dualBtn">
+    <button type="button" class="selectType btn btn-outline-dark btn-sm" data-toggle="button" aria-pressed="false"
+      autocomplete="off" ngx-mydatepicker name="mydate" [(ngModel)]="model" [options]="myOptions" #dp="ngx-mydatepicker"
+      (dateChanged)="onSecondDateChanged($event)" (click)="dp.toggleCalendar()">
+      <span *ngIf="!isDateSecond">
+        <span class="text-left">
+          <i class="fa fa-calendar"></i> 
+        </span>
+        <span class="text-center">
+          выберите дату
+        </span>
+      </span>
+      <span *ngIf="isDateSecond">
+        <i class="fa fa-calendar"></i> {{secondDate | date: 'dd/MM/yyyy'}}
+      </span>
+    </button>
+
+    <button type="button" class="closeBtn btn btn-outline-dark btn-sm" (click)="dp.clearDate()" (click)="unsetSecond()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>

@@ -1,0 +1,96 @@
+<!-- анимация загрузки -->
+<div *ngIf="!isLoaded" class="loader">
+  <yh-loader></yh-loader>
+</div>
+
+<div *ngIf="isLoaded" class="container-fluid">
+  <div class="text-center">
+    <h2>Услуги</h2>
+  </div>
+
+  <div>
+
+    <table mdbTable hover="true" class="table-responsive">
+      <thead>
+        <tr class="center">
+          <th scope="col">Название</th>
+          <th>Описание</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+
+      <tbody *ngFor="let n of ccServices">
+        <tr mdbTableCol (click)="openDetail(n)" class="center">
+          <td scope="row">{{n.name}}</td>
+          <td>{{n.description}}</td>
+          <td>{{n.email}}</td>
+        </tr>
+
+        <!-- окно подробной информации об услуге -->
+        <tr *ngIf="isDetailVisible && (serviceItem === n)">
+          <td colspan="3" class="detail">
+            <yh-service-detail [serviceItem]="serviceItem" (onDeleteService)="onDeleteService()"></yh-service-detail>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </div>
+
+  <button class="btn btn-success addbtn" (click)="openModal(addService)">+</button>
+
+  <!-- модальное окно добавления услуги -->
+  <ng-template #addService>
+    <form [formGroup]='formAdd' (ngSubmit)="onAddService()">
+      <div class="modal-header">
+        <h2 class="modal-title text-center">Добавить услугу</h2>
+        <!-- <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button> -->
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="md-form">
+            <label>Название услуги</label>
+            <input mdbInput mdbValidate type="text" class="form-control" formControlName="title">
+            <mdb-error *ngIf="formAdd.get('title').invalid && formAdd.get('title').touched">
+              Название услуги не может быть пустым</mdb-error>
+          </div>
+
+          <div class="md-form">
+            <label>Описание услуги</label>
+            <textarea mdbInput mdbValidate type="text" class="md-textarea form-control" formControlName="description"></textarea>
+            <mdb-error *ngIf="formAdd.get('description').invalid && formAdd.get('description').touched">
+              Описание услуги не может быть пустым</mdb-error>
+          </div>
+
+          <div class="md-form">
+            <label>Категория услуги</label>
+            <input mdbInput mdbValidate type="text" class="form-control" formControlName="category">
+            <mdb-error *ngIf="formAdd.get('category').invalid && formAdd.get('category').touched">
+              Категория услуги не может быть пустым</mdb-error>
+          </div>
+
+          <div class="md-form">
+            <label>Email услуги</label>
+            <input mdbInput mdbValidate type="email" class="form-control" formControlName="email">
+            <mdb-error *ngIf="formAdd.get('email').invalid && formAdd.get('email').touched && !formAdd.get('email')['errors']['email']">
+              Email услуги не может быть пустым</mdb-error>
+            <mdb-error *ngIf="formAdd.get('email').invalid && formAdd.get('email').touched && formAdd.get('email')['errors']['email']">
+              Введите корректный Email</mdb-error>
+          </div>
+
+          <div class="md-form">
+            <label>Ссылка на изображение</label>
+            <textarea mdbInput type="text" class="md-textarea form-control" formControlName="img"></textarea>
+          </div>
+
+          <div class="d-flex justify-content-around">
+            <button mdbBtn color="success" type="submit" (click)="modalRef.hide()" [disabled]="formAdd.invalid" class="modalbtn">Сохранить</button>
+            <button mdbBtn color="danger" type="reset" (click)="modalRef.hide()" class="modalbtn">Отменить</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </ng-template>
+</div>

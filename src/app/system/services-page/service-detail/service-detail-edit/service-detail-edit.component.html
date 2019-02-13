@@ -1,0 +1,36 @@
+<div class="content">
+  <form [formGroup]="form">
+    <h5 class="text-center">Редактирование услуги</h5>
+    <div class="md-form">
+      <input mdbInputDirective type="text" id="name" class="form-control" formControlName="name" value="{{serviceItem.name}}">
+      <label for="name">Название услуги:</label>
+    </div>
+    <!-- <span>Название услуги:
+      <input type="text" value="{{serviceItem.name}}" formControlName="name">
+    </span> -->
+    <div class="md-form">
+      <input mdbInputDirective type="text" id="description" class="form-control" formControlName="description" value="{{serviceItem.description}}">
+      <label for="description">Описание услуги:</label>
+    </div>
+
+    <div class="md-form">
+      <input mdbInputDirective type="text" id="category" class="form-control" formControlName="category" value="{{serviceItem.category}}">
+      <label for="category">Категория услуги:</label>
+    </div>
+
+    <div class="md-form">
+      <input mdbInputDirective type="text" id="email" class="form-control" formControlName="email" value="{{serviceItem.email}}">
+      <label for="email">Email:</label>
+    </div>
+
+    <div class="md-form">
+      <input mdbInputDirective type="text" id="img" class="form-control" formControlName="img" value="{{serviceItem.img}}">
+      <label for="img">Ссылка на картинку:</label>
+    </div>
+    
+  </form>
+</div>
+
+<button mdbBtn type="button" class="btn btn-success btn-sm" (click)="applyChange()">Сохранить</button>
+<button mdbBtn type="button" class="btn btn-warning btn-sm" (click)="closeChange()">Отменить</button>
+<button mdbBtn type="button" class="btn btn-danger btn-sm" (click)="deleteService()">Удалить</button>

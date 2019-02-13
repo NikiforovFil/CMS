@@ -1,0 +1,73 @@
+tbody>tr {
+    cursor: pointer;
+}
+h2{
+    margin-top: 10px;
+}
+.detail{
+    background: #ECECEC;
+}
+
+//настройки кнопки добавления
+.addbtn{
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    border-radius: 50%;
+    opacity: 0.5;
+    transition: 0.5s;
+    padding: 15px 22px;
+}
+.addbtn:hover {
+    opacity: 1;
+    transform: scale(1.2);
+    transition: 0.5s;
+}
+.modalbtn{
+    width: 145px;
+}
+
+//начало уменьшения текста
+@media (max-width: 1199px) {
+    * {
+        font-size: 1.3vw !important;
+    }
+    h2 {
+        font-size: 2.9vw !important;
+    }
+    .modalbtn{
+        font-size: 10px !important;
+        padding: 7px;
+    }
+}
+//конец уменьшения текста 
+@media (max-width: 860px) {
+    * {
+        font-size: 12px !important;
+    }
+    h2 {
+        font-size: 20px !important;
+    }
+    // .container-fluid{
+    //     padding-left: 7px;
+    //     padding-right: 10px;
+    // }
+    th, td{
+        padding-left: 0px !important;
+        padding-right: 2px !important;
+    }
+    .modalbtn{
+        font-size: 10px;
+        padding: 5px;
+    }
+    .center{
+        text-align: center;
+    }
+}
+
+//настройки таблицы
+@media (max-width: 490px) {
+    .address{
+        display: none;
+    } 
+}
